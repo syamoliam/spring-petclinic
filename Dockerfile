@@ -12,7 +12,7 @@ RUN tar -xzf apache-tomcat-9.0.71.tar.gz
 
 WORKDIR  /home/runner/work/spring-petclinic/spring-petclinic/target
 
-COPY spring-petclinic-2.7.3.jar /opt/tomcat/webapps/ROOT.jar
+COPY  /opt/tomcat/webapps/ROOT.jar spring-petclinic-2.7.3.jar
 
 EXPOSE 8085 
 
