@@ -10,7 +10,9 @@ ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.71/bin/apache-tomcat-9.0.71.ta
 
 RUN tar -xzf apache-tomcat-9.0.71.tar.gz
 
-COPY /home/runner/work/spring-petclinic/spring-petclinic/target/spring-petclinic-2.7.3.jar /usr/local/tomcat/webapps/ROOT.jar
+WORKDIR  /home/runner/work/spring-petclinic/spring-petclinic/target
+
+COPY spring-petclinic-2.7.3.jar /opt/tomcat/webapps/ROOT.jar
 
 EXPOSE 8085 
 
