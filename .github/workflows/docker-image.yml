@@ -54,13 +54,12 @@ jobs:
         id: meta
         uses: docker/metadata-action
         with:
-          images: syamoliam/pipeline
+          images: syamoliam/githubactions
       
       - name: Build and push Docker image
         uses: docker/build-push-action
         with:
           context: .
           push: true
-          tags: 
-            user/app:latest
-            user/app:1.0.0
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
