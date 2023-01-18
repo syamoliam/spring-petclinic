@@ -50,9 +50,9 @@ jobs:
           username: syamoliam
           password: Syamoliam143$
 
-     # - name: Extract metadata (tags, labels) for Docker
-     #  id: meta
-     #   uses: docker/metadata-action
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action
         with:
           images: syamoliam/pipeline
       
@@ -61,6 +61,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: sp
-          labels: sp
+          tags: |
+            user/app:latest
+            user/app:1.0.0
     
