@@ -17,19 +17,9 @@ jobs:
    strategy:
       matrix:
         java: [ '8', '11', '17' ]
-   steps:  
-    - uses: actions/checkout@v3
+  
 
-    - run: mkdir -p path/to/artifact
-
-    - run: echo hello > path/to/artifact/world.txt
-
-    - uses: actions/upload-artifact@v3
-   with:
-    name: my-artifact
-    path: path/to/artifact/world.txt
-
-  steps:
+   steps:
     - uses: actions/checkout@v2
     - name: Set up JDK ${{matrix.java}}
       uses: actions/setup-java@v2
@@ -40,6 +30,19 @@ jobs:
      
     - name: Build with Maven Wrapper
       run: ./mvnw -B package
+    
+      
+    - uses: actions/checkout@v3
+
+    - run: mkdir -p path/to/artifact
+
+    - run: echo hello > path/to/artifact/world.txt
+
+    - uses: actions/upload-artifact@v3
+  with:
+    name: my-artifact
+    path: path/to/artifact/world.txt
+
       
    
    # - uses: actions/checkout@v3
