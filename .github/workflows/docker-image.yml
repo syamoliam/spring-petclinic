@@ -17,8 +17,19 @@ jobs:
    strategy:
       matrix:
         java: [ '8', '11', '17' ]
+   steps:  
+    - uses: actions/checkout@v3
 
-   steps:
+    - run: mkdir -p path/to/artifact
+
+    - run: echo hello > path/to/artifact/world.txt
+
+    - uses: actions/upload-artifact@v3
+   with:
+    name: my-artifact
+    path: path/to/artifact/world.txt
+
+  steps:
     - uses: actions/checkout@v2
     - name: Set up JDK ${{matrix.java}}
       uses: actions/setup-java@v2
@@ -54,12 +65,13 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: syamoliam/githubactions
+          images: syamoliam/pipeline
       
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: 
+            tags: ${{ steps.meta.outputs.tags }}
+            labels: ${{ steps.meta.outputs.labels }}
