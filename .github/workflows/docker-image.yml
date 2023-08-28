@@ -31,8 +31,8 @@ jobs:
     - name: Build with Maven
       run: |
         mvn --batch-mode --update-snapshots verify
-        mkdir staging 
-        cp target/*.jar staging
+        # mkdir staging 
+        # cp target/*.jar staging
              
     # - name: storing artifacto to staging directory
     #   uses: actions/upload-artifact@v3
