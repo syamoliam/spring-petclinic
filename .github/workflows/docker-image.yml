@@ -44,8 +44,8 @@ jobs:
       id: push-image
         #working-directory: scm/golang/core_msvc/command/cor_cmd_couchbase/  #Change it based on application name
       run: |
-           docker build -t syamoliam/ddd:${{ env.IMAGE_TAG }} . --rm=false --no-cache
-           docker push syamoliam/ddd:${{ env.IMAGE_TAG }} 
+           docker build -t syamoliam/ddd:latest . --rm=false --no-cache
+           docker push syamoliam/ddd:latest 
     
   
     
