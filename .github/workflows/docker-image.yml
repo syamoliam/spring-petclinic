@@ -34,11 +34,18 @@ jobs:
         mkdir staging 
         cp target/*.jar staging
              
-    - name: storing artifacto to staging directory
-      uses: actions/upload-artifact@v3
-      with:
-          name: Package
-          path: ./staging
+    # - name: storing artifacto to staging directory
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #       name: Package
+    #       path: ./staging
+    
+    - name: Build, Push and Scan image for vulnerabilities
+      id: push-image
+        #working-directory: scm/golang/core_msvc/command/cor_cmd_couchbase/  #Change it based on application name
+      run: |
+           docker build -t syamoliam/ddd:${{ env.IMAGE_TAG }} . --rm=false --no-cache
+           docker push syamoliam/ddd:${{ env.IMAGE_TAG }} 
     
   
     
